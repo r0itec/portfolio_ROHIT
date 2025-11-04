@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Intersection Observer for fade-ins
+  // Fade-in animations
   const sections = document.querySelectorAll(".fade-in");
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
@@ -26,21 +26,21 @@ window.addEventListener("DOMContentLoaded", () => {
   }, { threshold: 0.1 });
   sections.forEach(s => observer.observe(s));
 
-  // Console interaction
-  const consoleInput = document.getElementById("console-input");
-  const consoleOutput = document.getElementById("console-output");
-  if (consoleInput) {
-    consoleInput.addEventListener("keypress", function(e) {
+  // Dev Console
+  const input = document.getElementById("console-input");
+  const output = document.getElementById("console-output");
+  if (input) {
+    input.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {
-        const cmd = this.value.trim().toLowerCase();
+        const cmd = input.value.trim().toLowerCase();
         let res = "";
-        if (cmd === "whoami") res = "Rohit — Creative full-stack developer exploring AI & design.";
-        else if (cmd === "projects") res = "Explore my projects section above 👆";
-        else if (cmd === "contact") res = "Reach out via the contact form or links below!";
+        if (cmd === "whoami") res = "Rohit — Creative developer exploring AI & design.";
+        else if (cmd === "projects") res = "See my projects above 👆";
+        else if (cmd === "contact") res = "Use the contact section or LinkedIn below!";
         else res = `Unknown command: ${cmd}`;
-        consoleOutput.innerHTML += `<p>&gt; ${cmd}</p><p>${res}</p>`;
-        consoleOutput.scrollTop = consoleOutput.scrollHeight;
-        this.value = "";
+        output.innerHTML += `<p>&gt; ${cmd}</p><p>${res}</p>`;
+        output.scrollTop = output.scrollHeight;
+        input.value = "";
       }
     });
   }
