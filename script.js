@@ -1,15 +1,30 @@
 window.addEventListener("DOMContentLoaded", () => {
-  // Project rendering
+
+  // Project Rendering (Flip Cards)
   const projectContainer = document.getElementById("project-container");
   if (projectContainer && typeof projectData !== "undefined") {
+
     projectData.forEach(p => {
       const card = document.createElement("div");
-      card.className = "project-card";
+      card.className = "flip-card";
+
       card.innerHTML = `
-        <h3>${p.title}</h3>
-        <p>${p.description}</p>
-        <p><b>Stack:</b> ${p.stack}</p>
-        <a href="${p.link}" target="_blank" class="btn-outline">GitHub</a>`;
+        <div class="flip-inner">
+
+          <div class="flip-front">
+            <h3>${p.title}</h3>
+            <p>${p.description}</p>
+          </div>
+
+          <div class="flip-back">
+            <h4>Tech Used</h4>
+            <p>${p.stack}</p>
+            <a href="${p.link}" target="_blank">View Repository</a>
+          </div>
+
+        </div>
+      `;
+
       projectContainer.appendChild(card);
     });
   }
@@ -23,25 +38,7 @@ window.addEventListener("DOMContentLoaded", () => {
         obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
-  sections.forEach(s => observer.observe(s));
+  }, { threshold: 0.2 });
 
-  // Dev Console
-  const input = document.getElementById("console-input");
-  const output = document.getElementById("console-output");
-  if (input) {
-    input.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        const cmd = input.value.trim().toLowerCase();
-        let res = "";
-        if (cmd === "whoami") res = "Rohit — Creative developer exploring AI & design.";
-        else if (cmd === "projects") res = "See my projects above 👆";
-        else if (cmd === "contact") res = "Use the contact section or LinkedIn below!";
-        else res = `Unknown command: ${cmd}`;
-        output.innerHTML += `<p>&gt; ${cmd}</p><p>${res}</p>`;
-        output.scrollTop = output.scrollHeight;
-        input.value = "";
-      }
-    });
-  }
+  sections.forEach(s => observer.observe(s));
 });
