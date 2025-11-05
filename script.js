@@ -1,35 +1,37 @@
 window.addEventListener("DOMContentLoaded", () => {
-
-  // Project Rendering (Flip Cards)
+  // ===== Projects: Cyber Terminal Cards =====
   const projectContainer = document.getElementById("project-container");
   if (projectContainer && typeof projectData !== "undefined") {
-
     projectData.forEach(p => {
       const card = document.createElement("div");
-      card.className = "flip-card";
+      card.className = "term-card";
 
       card.innerHTML = `
-        <div class="flip-inner">
-
-          <div class="flip-front">
-            <h3>${p.title}</h3>
-            <p>${p.description}</p>
-          </div>
-
-          <div class="flip-back">
-            <h4>Tech Used</h4>
-            <p>${p.stack}</p>
-            <a href="${p.link}" target="_blank">View Repository</a>
-          </div>
-
-        </div>
+        <div class="term-header"><span class="prompt">&gt;</span> ${p.title}</div>
+        <p class="term-desc">${p.description}</p>
+        <div class="term-stack">${p.stack}</div>
+        <a class="term-btn" href="${p.link}" target="_blank">[ view repo ]</a>
+        <div class="scanline"></div>
       `;
+
+      // subtle tilt
+      card.addEventListener("mousemove", (e) => {
+        const r = card.getBoundingClientRect();
+        const x = e.clientX - r.left;
+        const y = e.clientY - r.top;
+        const rotY = ((x / r.width) - 0.5) * 6;  // -3..3 deg
+        const rotX = -((y / r.height) - 0.5) * 6;
+        card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "perspective(800px) rotateX(0) rotateY(0)";
+      });
 
       projectContainer.appendChild(card);
     });
   }
 
-  // Fade-in animations
+  // ===== Fade-in observer =====
   const sections = document.querySelectorAll(".fade-in");
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
@@ -42,3 +44,24 @@ window.addEventListener("DOMContentLoaded", () => {
 
   sections.forEach(s => observer.observe(s));
 });
+// Mouse Reactive Background Glow
+document.addEventListener("mousemove", (e) => {
+  const x = (e.clientX / window.innerWidth) * 100 + "%";
+  const y = (e.clientY / window.innerHeight) * 100 + "%";
+  document.documentElement.style.setProperty("--x", x);
+  document.documentElement.style.setProperty("--y", y);
+});
+// Typewriter Effect
+const tw = document.getElementById("typewriter");
+if (tw) {
+  let text = tw.getAttribute("data-text");
+  let i = 0;
+  function type() {
+    if (i <= text.length) {
+      tw.innerText = text.slice(0, i);
+      i++;
+      setTimeout(type, 80);
+    }
+  }
+  type();
+}

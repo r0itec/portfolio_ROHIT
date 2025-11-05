@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Rohit Moris | Portfolio</title>
   <link rel="stylesheet" href="style.css">
- <script defer src="data/projectData.js"></script>
-<script defer src="script.js"></script>
-
+  <!-- Load project data first, then script -->
+  <script defer src="data/projectData.js"></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
 
 <header>
+  <div id="bg-light"></div>
   <nav class="nav">
     <h1 class="logo">ROHIT MORIS<span>.</span></h1>
     <ul class="nav-links">
@@ -28,7 +29,7 @@
 <!-- HERO -->
 <section id="hero" class="fade-in">
   <div class="intro">
-    <h2>In Shadows, I Create.</h2>
+    <h2 id="typewriter" data-text="In Shadows, I Create."></h2>
     <p>Hey, I'm Rohit — a developer exploring the edges of code and creativity.</p>
     <div class="hero-btns">
       <a href="#projects" class="btn">View My Work</a>
@@ -58,49 +59,52 @@
   </div>
 </section>
 
-<!-- SKILLS -->
+<!-- SKILLS (CYBER GRID) -->
 <section id="skills" class="fade-in">
   <h2>Skills</h2>
 
-  <div class="skills-split">
-    <div class="skills-block">
-      <h3>Tech Skills</h3>
-      <div class="skillbar"><span data-width="85">Frontend (HTML/CSS/JS)</span></div>
-      <div class="skillbar"><span data-width="75">React</span></div>
-      <div class="skillbar"><span data-width="70">Python</span></div>
-      <div class="skillbar"><span data-width="65">APIs / Firebase</span></div>
-      <div class="skillbar"><span data-width="72">Git / GitHub</span></div>
+  <div class="skills-grid">
+    <div class="skills-card">
+      <div class="skills-title">Tech Skills</div>
+      <ul class="stat-list">
+        <li><span>Frontend (HTML/CSS/JS)</span><b data-level="7"></b></li>
+        <li><span>React</span><b data-level="9"></b></li>
+        <li><span>Python</span><b data-level="8"></b></li>
+        <li><span>APIs / Firebase</span><b data-level="9"></b></li>
+        <li><span>Git / GitHub</span><b data-level="9"></b></li>
+      </ul>
     </div>
 
-    <div class="skills-block">
-      <h3>Life Skills</h3>
-      <div class="skillbar"><span data-width="82">Communication</span></div>
-      <div class="skillbar"><span data-width="78">Creativity</span></div>
-      <div class="skillbar"><span data-width="76">Leadership</span></div>
-      <div class="skillbar"><span data-width="80">Focus & Consistency</span></div>
-      <div class="skillbar"><span data-width="74">Problem Solving</span></div>
+    <div class="skills-card">
+      <div class="skills-title">Life Skills</div>
+      <ul class="stat-list">
+        <li><span>Communication</span><b data-level="7"></b></li>
+        <li><span>Creativity</span><b data-level="9"></b></li>
+        <li><span>Leadership</span><b data-level="9"></b></li>
+        <li><span>Focus & Consistency</span><b data-level="6"></b></li>
+        <li><span>Problem Solving</span><b data-level="10"></b></li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- PROJECTS (TERMINAL STYLE) -->
 <section id="projects" class="fade-in">
   <h2>Projects</h2>
   <div id="project-container" class="project-grid"></div>
 </section>
 
-
 <!-- TECH STACK -->
 <section id="stack" class="fade-in">
   <h2>Tech Stack</h2>
   <div class="tech-stack modern">
-    <div class="tech-item"><img src="html.png" alt="HTML"><p>HTML</p></div>
-    <div class="tech-item"><img src="css.png" alt="CSS"><p>CSS</p></div>
-    <div class="tech-item"><img src="js.png" alt="JavaScript"><p>JavaScript</p></div>
-    <div class="tech-item"><img src="python.png" alt="Python"><p>Python</p></div>
-    <div class="tech-item"><img src="react.png" alt="React"><p>React</p></div>
-    <div class="tech-item"><img src="firebase.png" alt="Firebase"><p>Firebase</p></div>
-    <div class="tech-item"><img src="git.png" alt="Git"><p>Git</p></div>
+    <div class="tech-item"><img src="./tech/html.png" alt="HTML"><p>HTML</p></div>
+    <div class="tech-item"><img src="./tech/css.png" alt="CSS"><p>CSS</p></div>
+    <div class="tech-item"><img src="./tech/js.png" alt="JavaScript"><p>JavaScript</p></div>
+    <div class="tech-item"><img src="./tech/python.png" alt="Python"><p>Python</p></div>
+    <div class="tech-item"><img src="./tech/react.png" alt="React"><p>React</p></div>
+    <div class="tech-item"><img src="./tech/firebase.png" alt="Firebase"><p>Firebase</p></div>
+    <div class="tech-item"><img src="./tech/git.png" alt="Git"><p>Git</p></div>
   </div>
 </section>
 
@@ -126,7 +130,7 @@
       <span>GitHub</span>
     </a>
 
-    <a class="social-btn" href="https://instagram.com/" target="_blank" aria-label="Instagram">
+    <a class="social-btn" href="https://instagram.com/roi_was_moi" target="_blank" aria-label="Instagram">
       <svg viewBox="0 0 24 24" class="icon"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM18.5 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg>
       <span>Instagram</span>
     </a>
